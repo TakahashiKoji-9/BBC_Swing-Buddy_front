@@ -36,12 +36,7 @@ export const HomeScreen: React.FC<HomeProps> = ({ onNavigate, onOpenReview }) =>
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
 
   const videoItems: VideoItem[] = [
-    { id: '1', category: 'driver', date: '2025/08/03', tags: ['スライス'], thumb: thumbFor('1'), status: '未添削', advice: '拳1.5個分の距離を保つ', updatedAt: Date.now() - 1000 },
-    { id: '2', category: 'wood', date: '2025/08/03', tags: ['フック'], thumb: thumbFor('2'), status: '未添削', advice: 'グリップの握り方を見直す', updatedAt: Date.now() - 2000 },
-    { id: '3', category: 'iron', date: '2025/08/03', tags: ['スライス'], thumb: thumbFor('3'), status: '未添削', advice: 'ボールの位置を左足寄りに', updatedAt: Date.now() - 3000 },
-    { id: '4', category: 'utility', date: '2025/08/03', tags: ['トップ'], thumb: thumbFor('4'), status: '未添削', advice: '体重移動のタイミング改善', updatedAt: Date.now() - 4000 },
-    { id: '5', category: 'wedge', date: '2025/08/03', tags: ['スライス'], thumb: thumbFor('5'), status: '未添削', advice: '手元を低く使う', updatedAt: Date.now() - 5000 },
-    { id: '6', category: 'putter', date: '2025/08/03', tags: ['方向性'], thumb: thumbFor('6'), status: '未添削', advice: 'ストロークの安定性向上', updatedAt: Date.now() - 6000 }
+    { id: '1', category: 'iron', date: '2025/08/22', tags: ['スライス','飛距離不足'], thumb: thumbFor('3'), status: '添削済', advice: 'ボールの位置を左足寄りに', updatedAt: Date.now() - 3000 },
   ];
 
   // お気に入り復元
@@ -91,7 +86,6 @@ export const HomeScreen: React.FC<HomeProps> = ({ onNavigate, onOpenReview }) =>
     putter: filteredItems.filter(item => item.category === 'putter')
   }), [filteredItems]);
 
-
   const PinDrillCard: React.FC = () => {
     if (favoriteAdvices.length === 0) return null;
     const latestFavId = favoriteAdvices[0]?.id;
@@ -125,6 +119,7 @@ export const HomeScreen: React.FC<HomeProps> = ({ onNavigate, onOpenReview }) =>
     );
   };
 
+  /* ====== 修正箇所：VideoCard（縦長＋contain） ====== */
   const VideoCard: React.FC<{ item: VideoItem }> = ({ item }) => {
     const isFavorite = favorites.has(item.id);
     const review = mockReviews.find(r => r.id === item.id);
@@ -135,8 +130,9 @@ export const HomeScreen: React.FC<HomeProps> = ({ onNavigate, onOpenReview }) =>
         }}
         className="relative rounded-2xl overflow-hidden bg-white/10 border border-white/15 shadow-[0_1px_12px_rgba(0,0,0,.25)] w-full text-left focus:outline-none focus:ring-2 focus:ring-white/50"
       >
-        <div className="relative aspect-video">
-          <img src={item.thumb} alt={item.category} className="w-full h-full object-cover" />
+        {/* ▼ ここを aspect-video -> aspect-[10/16] + object-contain に変更 */}
+        <div className="relative w-full aspect-[10/16] bg-black/30">
+          <img src={item.thumb} alt={item.category} className="absolute inset-0 w-full h-full object-contain" loading="lazy" />
           <div className="absolute top-2 left-2">
             <span className="px-2 py-1 text-xs text-white bg-purple-500/85 rounded-full">{item.status}</span>
           </div>
@@ -159,6 +155,7 @@ export const HomeScreen: React.FC<HomeProps> = ({ onNavigate, onOpenReview }) =>
       </button>
     );
   };
+  /* ====== /修正箇所 ====== */
 
   const CategorySection: React.FC<{ title: string; items: VideoItem[] }> = ({ title, items }) => (
     <div className="mb-12">
@@ -190,7 +187,7 @@ export const HomeScreen: React.FC<HomeProps> = ({ onNavigate, onOpenReview }) =>
           <button onClick={() => onNavigate('profile')} className="w-10 h-10 rounded-full overflow-hidden bg-white/20">
             <img src={AVATAR_IMG} alt="Profile" className="w-full h-full object-cover" />
           </button>
-          <div className="flex-1 mx-4">
+        <div className="flex-1 mx-4">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/70" size={18} />
               <input

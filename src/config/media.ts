@@ -2,6 +2,7 @@
 export const BG_IMG = '/images/bg.jpg';           // 既存の bg.jpg をここに配置（public/images/bg.jpg）
 export const AVATAR_IMG = '/media/avatar.jpg';    // 無ければ fallback 表示
 export const DEMO_IMG = '/media/demo.jpg';        // 無ければ fallback 表示
+export const HOME_BG_IMG = '/images/bg.jpg';
 
 // 必須ではないが、将来の差し替えやCDN切替を楽にするためのエイリアス
 export const PLACEHOLDER = '/placeholder.svg';

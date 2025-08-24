@@ -12,7 +12,7 @@ const MOCK_REQUESTS: RequestItem[] = [
     createdAt: '2025-01-10T20:13:00Z',
     durationSec: 45,
     reward: { kind: 'ticket', amount: 1 },
-    thumbnailUrl: 'https://images.pexels.com/photos/1325735/pexels-photo-1325735.jpeg?auto=compress&cs=tinysrgb&w=400',
+    thumbnailUrl: '/media/users/u002_thumb.jpg',
     commentsCount: 20,
     status: 'new',
     unread: true,
@@ -27,18 +27,18 @@ const MOCK_REQUESTS: RequestItem[] = [
     // ▼ アバターを public 配下の静止画に変更（例）
     userAvatar: '/media/users/u001.jpg',
     level: 'intermediate',
-    club: 'driver',
-    tags: ['スライス', '方向性'],
-    createdAt: '2025-01-10T23:34:00Z',
-    durationSec: 60,
+    club: 'iron',
+    tags: ['スライス', '飛距離不足'],
+    createdAt: '2025-08-22T23:34:00Z',
+    durationSec: 3,
     reward: { kind: 'yen', amount: 3000 },
     // ▼ 上部サムネイルも public 配下に変更（例）
     thumbnailUrl: '/media/users/u001_thumb.jpg',
-    commentsCount: 60,
+    commentsCount: 5,
     status: 'new',
     isFavorite: true,
     description: 'ロングアイアンやドライバーでスライスが強く出て狙った方向へ行かないです。カット軌道を改善したいです。',
-    environment: 'indoor',
+    environment: 'outdoor',
     handedness: 'right'
   },
 

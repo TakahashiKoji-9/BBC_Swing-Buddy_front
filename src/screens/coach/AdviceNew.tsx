@@ -6,6 +6,7 @@ import {
 import StepSidebar, { SWING_STEPS, SwingStepKey } from 'src/components/advice/StepSidebar';
 import VoiceRecorder from 'src/components/advice/VoiceRecorder';
 import SnapshotAnnotator from 'src/components/advice/SnapshotAnnotator';
+import { BG_IMG } from '@/src/config/media';
 
 type Props = {
   videoId?: string;
@@ -79,7 +80,7 @@ const AdviceNew: React.FC<Props> = ({ videoId, onNavigate }) => {
     <div className="max-w-[430px] mx-auto bg-white min-h-100dvh h-100dvh shadow-2xl rounded-[28px] overflow-hidden relative">
       {/* 背景 */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${DUMMY_THUMB})` }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${BG_IMG})` }} />
         <div className="absolute inset-0 bg-gradient-to-b from-purple-500 via-purple-600 to-pink-500 opacity-90" />
       </div>
 

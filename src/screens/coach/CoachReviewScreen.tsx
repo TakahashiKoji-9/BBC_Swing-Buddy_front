@@ -53,7 +53,7 @@ export const CoachReviewScreen: React.FC<CoachReviewScreenProps> = ({
   onBack,
   onSubmitted
 }) => {
-  const videoUrl = '/videos/sample.mp4';
+  const videoUrl = '/videos/dummy.mp4';
 
   const [draft, setDraft] = useState<ReviewDraft | null>(null);
   const [currentTime, setCurrentTime] = useState(0);

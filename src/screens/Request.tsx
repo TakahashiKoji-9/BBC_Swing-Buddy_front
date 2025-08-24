@@ -163,7 +163,7 @@ export const RequestScreen: React.FC<RequestProps> = ({ onNavigate }) => {
               className="w-10 h-10 rounded-full overflow-hidden bg-white/20 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-white/50"
             >
               <img
-                src="https://images.pexels.com/photos/1325735/pexels-photo-1325735.jpeg?auto=compress&cs=tinysrgb&w=100"
+                src="/media/avatar.jpg"
                 alt="Profile"
                 className="w-full h-full object-cover"
               />
